@@ -127,20 +127,40 @@ blockquote {
 /**
  * Code formatting
  */
-pre,
+figure.highlight {
+  border:  1px solid #ccc;
+  padding: 0px;
+}
+
+pre {
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px;
+    background-color: #fff;
+}
+
 code {
     font-size: 15px;
     border: 1px solid $grey-color-light;
     border-radius: 3px;
-    background-color: #eef;
+    background-color: #fff;
+    margin: 0px;
+}
+
+pre.lineno {
+  color: #aaa;
+  background-color: #eeeeee;
+  padding: 8px;
+  padding-right: 8px;
+  font-weight: bold;
 }
 
 code {
-    padding: 1px 5px;
+    padding: 0px 0px;
 }
 
 pre {
-    padding: 8px 12px;
+    padding: 0px 0px;
     overflow-x: auto;
 
     > code {
@@ -148,6 +168,19 @@ pre {
         padding-right: 0;
         padding-left: 0;
     }
+}
+
+td.gutter.gl {
+  margin: 0px;
+  padding: 0px;
+  border: 0px solid #000;
+}
+
+td.code {
+  margin: 0px;
+  padding: 0px;
+  padding-left: 8px;
+  border: 0px solid #000;
 }
 
 
