@@ -20,6 +20,12 @@ Too much:
 
 {% highlight c++ linenos %}
 
+// Only used to alias with pages.
+struct Header
+{
+  Header * next;
+};
+
 struct Page
 {
   std::vector<unsigned char> store;
@@ -29,7 +35,7 @@ template <typename T>
 struct PagedPool
 {
   T * allocate();
-  T * deallocate();
+  void deallocate(T * t);
 
 private:
   void addPage();
@@ -46,14 +52,9 @@ private:
 
 {% endhighlight %}
 
-When needed, allocate a new page.
+Allocation and deallocation is performed via:
 
 {% highlight c++ linenos %}
-
-struct Header
-{
-  Header * next;
-};
 
 template <typename T>
 T * PagedPool<T>::allocate()
@@ -68,6 +69,19 @@ T * PagedPool<T>::allocate()
 
   return t;
 }
+
+template <typename T>
+void PagedPool<T>::deallocate(T * t)
+{
+  ((Header *)t)->next = freeHead;
+  freeHead = t;
+}
+
+{% endhighlight %}
+
+When needed, create a new page.
+
+{% highlight c++ linenos %}
 
 template <typename T>
 void PagedPool<T>::addPage()
@@ -104,6 +118,10 @@ void PagedPool<T>::addPage()
 }
 
 {% endhighlight %}
+
+Extending the system.
+
+- Configurable resource type.
 
 Figure:
 

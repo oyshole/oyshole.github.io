@@ -11,6 +11,8 @@ github_username: oyshole
 # Build settings
 markdown: kramdown
 markdown_ext:  markdown,mkdown,mkdn,mkd,md
+highlighter: rouge
+# rouge_options: ["linenos=table"]
 
 #redcarpet:
 #  extensions: ["line_numbers", "tables", "autolink", "strikethrough", "space_after_headers", "with_toc_data", "fenced_code_blocks"]
